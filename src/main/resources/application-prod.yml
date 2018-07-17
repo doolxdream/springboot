@@ -1,0 +1,10 @@
+server:
+  port: 8077
+spring:
+  datasource:
+     url: jdbc:mysql://guoxintongxintongdai.mysql.rds.aliyuncs.com:3999/fqn
+     username: x_t_d_g_x_t
+     password: wUWKJHHJjhHGdgDGR
+     driver-class-name: com.mysql.jdbc.Driver
+     # 使用druid数据源
+     type: com.alibaba.druid.pool.DruidDataSource
