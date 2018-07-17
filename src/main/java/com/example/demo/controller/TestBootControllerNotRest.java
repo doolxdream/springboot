@@ -4,7 +4,10 @@ package com.example.demo.controller;
  * Created by liuxiang on 2018/7/16.
  */
 
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +20,12 @@ import java.util.Map;
 @Controller
 @RequestMapping("/testbootNotRest")
 public class TestBootControllerNotRest {
+
+
     @Autowired
     private UserService userService;
+
+
 
     /**
      * @param customerId
