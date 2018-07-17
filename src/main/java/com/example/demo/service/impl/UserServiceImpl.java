@@ -2,6 +2,8 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dao.UserDao;
 import com.example.demo.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,7 @@ import java.util.Map;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
+    Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private UserDao userDao;
 
@@ -27,6 +30,11 @@ public class UserServiceImpl implements UserService {
         map.put("data", s);
         map.put("respCode", "000");
         map.put("respDesc", "调用成功");
+
+
+       // userDao.save(4000264, "100");
+        //userDao.save(4000265, "a");
+
         return map;
     }
 }

@@ -8,4 +8,8 @@
 		select customer_phonenumber from customer where customer_id=#{i}
 	</select>
 
+	<insert id="save">
+		insert customer_account_info(CAI_CustomerId,CAI_LineOfCredit) values(#{caiId},#{caiAvail});
+	</insert>
+
 </mapper>
