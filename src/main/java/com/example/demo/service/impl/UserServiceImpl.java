@@ -1,7 +1,12 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dao.UserDao;
+import com.example.demo.entity.Result;
+import com.example.demo.enums.ResultEnum;
+import com.example.demo.exception.DemoException;
+import com.example.demo.handle.ExceptionHandle;
 import com.example.demo.service.UserService;
+import com.example.demo.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +35,18 @@ public class UserServiceImpl implements UserService {
         map.put("data", s);
         map.put("respCode", "000");
         map.put("respDesc", "调用成功");
-
-
-       // userDao.save(4000264, "100");
-        //userDao.save(4000265, "a");
-
         return map;
+    }
+
+    @Override
+    @Transactional
+    public Result<Map<String, Object>> get2(Integer customerId) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        if (customerId == null) {
+            throw new DemoException(ResultEnum.PRIMARY_SCHOOL);
+        }
+        String s = userDao.getById(customerId);
+        map.put("phone", s);
+        return ResultUtil.success(map);
     }
 }
