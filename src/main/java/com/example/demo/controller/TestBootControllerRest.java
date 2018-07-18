@@ -4,8 +4,10 @@ package com.example.demo.controller;
  * Created by liuxiang on 2018/7/16.
  */
 
+import com.example.demo.entity.Result;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
+import com.example.demo.utils.ResultUtil;
 import com.example.demo.vo.TestToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,10 +41,8 @@ public class TestBootControllerRest {
      * @PathVariable不能省 注意和以下方法的区别
      */
     @GetMapping("/test3/{customerId}")
-    public Map<String, Object> getUser(@PathVariable("customerId") Integer customerId) {
-        Map<String, Object> map = userService.get(customerId);
-        logger.info(user.getUserName() + "," + user.getUserAge());
-        return map;
+    public Result<Map<String, Object>> getUser(@PathVariable("customerId") Integer customerId) throws Exception {
+        return userService.get2(customerId);
     }
 
 
@@ -87,7 +87,7 @@ public class TestBootControllerRest {
     public Map<String, Object> getUser4(@RequestParam MultipartFile file, @PathVariable Integer customerId) {
         Map<String, Object> map = userService.get(customerId);
 
-        logger.info("原始文件名称："+file.getOriginalFilename());
+        logger.info("原始文件名称：" + file.getOriginalFilename());
 
         return map;
     }
